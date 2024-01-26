@@ -59,7 +59,7 @@ dotnet run --lang en --cookie ""csrfTokenXXXX%2Fcollect""";
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
 
-            hasNextPage = htmlDocument.DocumentNode.SelectNodes("//li[@class='next disabled']").Count == 0;
+            hasNextPage = htmlDocument.DocumentNode.SelectNodes("//li[@class='next']")?.Count > 0;
 
             var links = htmlDocument.DocumentNode.SelectNodes(
                 $"//a[starts-with(@href, '/judge/{lang}/runs/code/')]");
